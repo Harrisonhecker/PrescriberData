@@ -12,7 +12,6 @@ class StatesController < ApplicationController
     row_num = 2
     stateList = [] # array will contain the state objects
     stateNames = [] # array will contain the names of the states
-    stateIndex = 0
     while row_num <= last_row do
         
         # save data
