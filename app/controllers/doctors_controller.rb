@@ -11,6 +11,7 @@ class DoctorsController < ApplicationController
     # iterate over each row and store the correct information, use offset to skip past headers
     last_row = sheet.last_row
     row_num = 1
+    doctorList = []
     while row_num <= last_row do
         
         # save data
@@ -49,15 +50,16 @@ class DoctorsController < ApplicationController
             Month5TRxDoctor: trx_month_5,
             Month6TRxDoctor: trx_month_6,
         )
-
         row_num = row_num + 1
+        doctorList << new_doctor
     end
+    Doctor.import doctorList
   end
 
   # GET /doctors or /doctors.json
   def index
-    @doctors = Doctor.all
     parse_info
+    @doctors = Doctor.all
   end
 
   # GET /doctors/1 or /doctors/1.json

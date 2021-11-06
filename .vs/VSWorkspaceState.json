@@ -3,7 +3,12 @@
     "",
     "\\app",
     "\\app\\controllers",
-    "\\app\\views"
+    "\\app\\models",
+    "\\app\\views",
+    "\\config",
+    "\\db",
+    "\\db\\migrate"
   ],
+  "SelectedNode": "\\app\\views\\layouts",
   "PreviewInSolutionExplorer": false
 }
