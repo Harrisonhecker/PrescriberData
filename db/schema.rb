@@ -12,11 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_11_06_134322) do
 
-  create_table "homes", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "products", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
