@@ -3,7 +3,7 @@ class DoctorsController < ApplicationController
 
    # I don't want to lose any of the boiler plate stuff below in case I need it, so I'm just gonna start my code here
   def parse_info
-    
+
     # open the sheet
     file = Roo::Spreadsheet.open('./Prescriber_Data.csv')
     sheet = file.sheet(0)
@@ -58,7 +58,8 @@ class DoctorsController < ApplicationController
 
   # GET /doctors or /doctors.json
   def index
-    #parse_info
+    Doctor.delete_all
+    parse_info
     @doctors = Doctor.all
   end
 
