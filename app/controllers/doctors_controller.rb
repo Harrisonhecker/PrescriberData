@@ -52,7 +52,8 @@ class DoctorsController < ApplicationController
             Month5TRxDoctor: trx_month_5,
             Month6TRxDoctor: trx_month_6,
             TotalNRxDoctor: total_nrx,
-            TotalTRxDoctor: total_trx
+            TotalTRxDoctor: total_trx,
+            DoctorsProduct: product
         )
         row_num = row_num + 1
         doctorList << new_doctor

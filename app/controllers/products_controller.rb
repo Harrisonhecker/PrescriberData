@@ -15,6 +15,7 @@ require 'roo' # use this gem for parsing excel files
         
         # save data
         product_id = sheet.cell(row_num, 1) 
+        doctor = sheet.cell(row_num, 2) + " " + sheet.cell(row_num, 3)
         state = sheet.cell(row_num, 4)
         product = sheet.cell(row_num, 5)
         nrx_month_1 = sheet.cell(row_num, 6)
@@ -36,22 +37,24 @@ require 'roo' # use this gem for parsing excel files
         if (productNames.find_index(product).nil?)
             productNames << product
             new_product = Product.new(
-            ProductID: product_id,
-            ProductName: product,
-            Month1NRxProduct: nrx_month_1.to_i,
-            Month2NRxProduct: nrx_month_2.to_i,
-            Month3NRxProduct: nrx_month_3.to_i,
-            Month4NRxProduct: nrx_month_4.to_i,
-            Month5NRxProduct: nrx_month_5.to_i,
-            Month6NRxProduct: nrx_month_6.to_i,
-            Month1TRxProduct: trx_month_1.to_i,
-            Month2TRxProduct: trx_month_2.to_i,
-            Month3TRxProduct: trx_month_3.to_i,
-            Month4TRxProduct: trx_month_4.to_i,
-            Month5TRxProduct: trx_month_5.to_i,
-            Month6TRxProduct: trx_month_6.to_i,
-            TotalNRxProduct: total_nrx,
-            TotalTRxProduct: total_trx
+                ProductID: product_id,
+                ProductName: product,
+                Month1NRxProduct: nrx_month_1.to_i,
+                Month2NRxProduct: nrx_month_2.to_i,
+                Month3NRxProduct: nrx_month_3.to_i,
+                Month4NRxProduct: nrx_month_4.to_i,
+                Month5NRxProduct: nrx_month_5.to_i,
+                Month6NRxProduct: nrx_month_6.to_i,
+                Month1TRxProduct: trx_month_1.to_i,
+                Month2TRxProduct: trx_month_2.to_i,
+                Month3TRxProduct: trx_month_3.to_i,
+                Month4TRxProduct: trx_month_4.to_i,
+                Month5TRxProduct: trx_month_5.to_i,
+                Month6TRxProduct: trx_month_6.to_i,
+                TotalNRxProduct: total_nrx,
+                TotalTRxProduct: total_trx,
+                TopDoctor: doctor,
+                TopDoctorPrescriptions: total_trx
             )
             productList << new_product
         # if product does exist, update values
@@ -71,6 +74,10 @@ require 'roo' # use this gem for parsing excel files
             currentProduct.Month6TRxProduct += (trx_month_6).to_i
             currentProduct.TotalNRxProduct += total_nrx
             currentProduct.TotalTRxProduct += total_trx
+            if (currentProduct.TopDoctorPrescriptions < total_trx) # maintain which doctor has the most prescriptions for the product
+                currentProduct.TopDoctor = doctor
+                currentProduct.TopDoctorPrescriptions = total_trx
+            end
         end
         row_num = row_num + 1
     end

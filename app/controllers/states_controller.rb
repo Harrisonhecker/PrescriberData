@@ -15,7 +15,7 @@ class StatesController < ApplicationController
     while row_num <= last_row do
         
         # save data
-        state_id = sheet.cell(row_num, 1) 
+        state_id = sheet.cell(row_num, 1)
         state = sheet.cell(row_num, 4)
         product = sheet.cell(row_num, 5)
         nrx_month_1 = sheet.cell(row_num, 6)
