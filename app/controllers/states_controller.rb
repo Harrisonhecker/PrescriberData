@@ -1,6 +1,62 @@
 class StatesController < ApplicationController
   before_action :set_state, only: %i[ show edit update destroy ]
 
+  def parse_info
+
+    # open the sheet
+    file = Roo::Spreadsheet.open('./Prescriber_Data.csv')
+    sheet = file.sheet(0)
+
+    # iterate over each row and store the correct information, start at row 2 to skip past headers
+    last_row = sheet.last_row
+    row_num = 2
+    stateList = []
+    while row_num <= last_row do
+        
+        # save data
+        state_id = sheet.cell(row_num, 1) 
+        doctor_first_name = sheet.cell(row_num, 2)
+        doctor_last_name = sheet.cell(row_num, 3)
+        state = sheet.cell(row_num, 4)
+        product = sheet.cell(row_num, 5)
+        nrx_month_1 = sheet.cell(row_num, 6)
+        nrx_month_2 = sheet.cell(row_num, 7)
+        nrx_month_3 = sheet.cell(row_num, 8)
+        nrx_month_4 = sheet.cell(row_num, 9)
+        nrx_month_5 = sheet.cell(row_num, 10)
+        nrx_month_6 = sheet.cell(row_num, 11)
+        trx_month_1 = sheet.cell(row_num, 12)
+        trx_month_2 = sheet.cell(row_num, 13)
+        trx_month_3 = sheet.cell(row_num, 14)
+        trx_month_4 = sheet.cell(row_num, 15)
+        trx_month_5 = sheet.cell(row_num, 16)
+        trx_month_6 = sheet.cell(row_num, 17)
+        total_nrx = nrx_month_1.to_i + nrx_month_2.to_i + nrx_month_3.to_i + nrx_month_4.to_i + nrx_month_5.to_i + nrx_month_6.to_i
+        total_trx = trx_month_1.to_i + trx_month_2.to_i + trx_month_3.to_i + trx_month_4.to_i + trx_month_5.to_i + trx_month_6.to_i
+
+        new_doctor = State.new(
+            StateID: state_id,
+            Month1NRxState: nrx_month_1,
+            Month2NRxState: nrx_month_2,
+            Month3NRxState: nrx_month_3,
+            Month4NRxState: nrx_month_4,
+            Month5NRxState: nrx_month_5,
+            Month6NRxState: nrx_month_6,
+            Month1TRxState: trx_month_1,
+            Month2TRxState: trx_month_2,
+            Month3TRxState: trx_month_3,
+            Month4TRxState: trx_month_4,
+            Month5TRxState: trx_month_5,
+            Month6TRxState: trx_month_6,
+            TotalNRxState: total_nrx,
+            TotalTRxState: total_trx
+        )
+        row_num = row_num + 1
+        stateList << new_state
+    end
+    State.import doctorList
+  end
+
   # GET /states or /states.json
   def index
     @states = State.all

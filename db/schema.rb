@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_06_162833) do
+ActiveRecord::Schema.define(version: 2021_11_06_192401) do
 
   create_table "doctors", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2021_11_06_162833) do
     t.integer "TotalNRxProduct"
     t.integer "TotalTRxProduct"
     t.integer "ProductID"
+    t.string "ProductName"
   end
 
   create_table "states", force: :cascade do |t|
@@ -72,6 +73,7 @@ ActiveRecord::Schema.define(version: 2021_11_06_162833) do
     t.integer "TotalNRxState"
     t.integer "TotalTRxState"
     t.integer "StateID"
+    t.string "StateName"
   end
 
 end
