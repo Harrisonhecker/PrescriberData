@@ -5,7 +5,7 @@ class DoctorsController < ApplicationController
   def parse_info
     
     # open the sheet
-    file = Roo::Spreadsheet.open('./Prescriber_data.csv')
+    file = Roo::Spreadsheet.open('./Prescriber_Data.csv')
     sheet = file.sheet(0)
 
     # iterate over each row and store the correct information, use offset to skip past headers
@@ -58,7 +58,7 @@ class DoctorsController < ApplicationController
 
   # GET /doctors or /doctors.json
   def index
-    parse_info
+    #parse_info
     @doctors = Doctor.all
   end
 
