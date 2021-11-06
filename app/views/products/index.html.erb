@@ -1,8 +1,26 @@
-<h2> HI!!!!!!! </h2>
+<p id="notice"><%= notice %></p>
 
-<h2> doctor first names </h2>
+<h1>Products</h1>
 
-<tbody>
-	<% doctor = Doctor.take %>
-	<p><% doctor.FirstName %></p>
-</tbody>
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.ProductID %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product', new_product_path %>
