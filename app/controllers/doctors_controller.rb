@@ -1,9 +1,63 @@
 class DoctorsController < ApplicationController
   before_action :set_doctor, only: %i[ show edit update destroy ]
 
+   # I don't want to lose any of the boiler plate stuff below in case I need it, so I'm just gonna start my code here
+  def parse_info
+    
+    # open the sheet
+    file = Roo::Spreadsheet.open('./Prescriber_data.csv')
+    sheet = file.sheet(0)
+
+    # iterate over each row and store the correct information, use offset to skip past headers
+    last_row = sheet.last_row
+    row_num = 1
+    while row_num <= last_row do
+        
+        # save data
+        doctor_id = sheet.cell(row_num, 1) 
+        doctor_first_name = sheet.cell(row_num, 2)
+        doctor_last_name = sheet.cell(row_num, 3)
+        state = sheet.cell(row_num, 4)
+        product = sheet.cell(row_num, 5)
+        nrx_month_1 = sheet.cell(row_num, 6)
+        nrx_month_2 = sheet.cell(row_num, 7)
+        nrx_month_3 = sheet.cell(row_num, 8)
+        nrx_month_4 = sheet.cell(row_num, 9)
+        nrx_month_5 = sheet.cell(row_num, 10)
+        nrx_month_6 = sheet.cell(row_num, 11)
+        trx_month_1 = sheet.cell(row_num, 12)
+        trx_month_2 = sheet.cell(row_num, 13)
+        trx_month_3 = sheet.cell(row_num, 14)
+        trx_month_4 = sheet.cell(row_num, 15)
+        trx_month_5 = sheet.cell(row_num, 16)
+        trx_month_6 = sheet.cell(row_num, 17)
+
+        new_doctor = Doctor.new(
+            DoctorID: doctor_id,
+            FirstName: doctor_first_name,
+            LastName: doctor_last_name,
+            Month1NRxDoctor: nrx_month_1,
+            Month2NRxDoctor: nrx_month_2,
+            Month3NRxDoctor: nrx_month_3,
+            Month4NRxDoctor: nrx_month_4,
+            Month5NRxDoctor: nrx_month_5,
+            Month6NRxDoctor: nrx_month_6,
+            Month1TRxDoctor: trx_month_1,
+            Month2TRxDoctor: trx_month_2,
+            Month3TRxDoctor: trx_month_3,
+            Month4TRxDoctor: trx_month_4,
+            Month5TRxDoctor: trx_month_5,
+            Month6TRxDoctor: trx_month_6,
+        )
+
+        row_num = row_num + 1
+    end
+  end
+
   # GET /doctors or /doctors.json
   def index
     @doctors = Doctor.all
+    parse_info
   end
 
   # GET /doctors/1 or /doctors/1.json

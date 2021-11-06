@@ -10,11 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_06_151621) do
+ActiveRecord::Schema.define(version: 2021_11_06_162833) do
 
   create_table "doctors", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "Month1NRxDoctor"
+    t.integer "Month2NRxDoctor"
+    t.integer "Month3NRxDoctor"
+    t.integer "Month4NRxDoctor"
+    t.integer "Month5NRxDoctor"
+    t.integer "Month6NRxDoctor"
+    t.integer "Month1TRxDoctor"
+    t.integer "Month2TRxDoctor"
+    t.integer "Month3TRxDoctor"
+    t.integer "Month4TRxDoctor"
+    t.integer "Month5TRxDoctor"
+    t.integer "Month6TRxDoctor"
+    t.integer "TotalNRxDoctor"
+    t.integer "TotalTRxDoctor"
+    t.integer "DoctorID"
+    t.string "FirstName"
+    t.string "LastName"
   end
 
   create_table "products", force: :cascade do |t|
@@ -34,6 +51,7 @@ ActiveRecord::Schema.define(version: 2021_11_06_151621) do
     t.integer "Month6TRxProduct"
     t.integer "TotalNRxProduct"
     t.integer "TotalTRxProduct"
+    t.integer "ProductID"
   end
 
   create_table "states", force: :cascade do |t|
@@ -53,6 +71,7 @@ ActiveRecord::Schema.define(version: 2021_11_06_151621) do
     t.integer "Month6TRxState"
     t.integer "TotalNRxState"
     t.integer "TotalTRxState"
+    t.integer "StateID"
   end
 
 end
