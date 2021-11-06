@@ -8,9 +8,9 @@ class DoctorsController < ApplicationController
     file = Roo::Spreadsheet.open('./Prescriber_Data.csv')
     sheet = file.sheet(0)
 
-    # iterate over each row and store the correct information, use offset to skip past headers
+    # iterate over each row and store the correct information, start at row 2 to skip past headers
     last_row = sheet.last_row
-    row_num = 1
+    row_num = 2
     doctorList = []
     while row_num <= last_row do
         
