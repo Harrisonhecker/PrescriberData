@@ -34,14 +34,30 @@ class StatesController < ApplicationController
         total_nrx = nrx_month_1.to_i + nrx_month_2.to_i + nrx_month_3.to_i + nrx_month_4.to_i + nrx_month_5.to_i + nrx_month_6.to_i
         total_trx = trx_month_1.to_i + trx_month_2.to_i + trx_month_3.to_i + trx_month_4.to_i + trx_month_5.to_i + trx_month_6.to_i
 
-        # if state name not in hash, add to hash
+        # if state does not exist, create it
         if (stateNames.find_index(state).nil?)
-            stateNames[stateIndex] = state
-            stateIndex += 1
-        end
-
-        # if state already exists in the db, update values
-        if (!(stateNames.find_index(state).nil?))
+            stateNames << state
+            new_state = State.new(
+            StateID: state_id,
+            StateName: state,
+            Month1NRxState: nrx_month_1.to_i,
+            Month2NRxState: nrx_month_2.to_i,
+            Month3NRxState: nrx_month_3.to_i,
+            Month4NRxState: nrx_month_4.to_i,
+            Month5NRxState: nrx_month_5.to_i,
+            Month6NRxState: nrx_month_6.to_i,
+            Month1TRxState: trx_month_1.to_i,
+            Month2TRxState: trx_month_2.to_i,
+            Month3TRxState: trx_month_3.to_i,
+            Month4TRxState: trx_month_4.to_i,
+            Month5TRxState: trx_month_5.to_i,
+            Month6TRxState: trx_month_6.to_i,
+            TotalNRxState: total_nrx,
+            TotalTRxState: total_trx
+            )
+            stateList << new_state
+        # if state does exist, update values
+        else 
             currentState = stateList[stateNames.find_index(state)]
             currentState.Month1NRxState += (nrx_month_1).to_i
             currentState.Month2NRxState += (nrx_month_2).to_i
@@ -57,27 +73,6 @@ class StatesController < ApplicationController
             currentState.Month6TRxState += (trx_month_6).to_i
             currentState.TotalNRxState += total_nrx
             currentState.TotalTRxState += total_trx
-   
-        # if state doesn't exist in list, add it to
-        else 
-            new_state = State.new(
-                StateID: state_id,
-                Month1NRxState: nrx_month_1.to_i,
-                Month2NRxState: nrx_month_2.to_i,
-                Month3NRxState: nrx_month_3.to_i,
-                Month4NRxState: nrx_month_4.to_i,
-                Month5NRxState: nrx_month_5.to_i,
-                Month6NRxState: nrx_month_6.to_i,
-                Month1TRxState: trx_month_1.to_i,
-                Month2TRxState: trx_month_2.to_i,
-                Month3TRxState: trx_month_3.to_i,
-                Month4TRxState: trx_month_4.to_i,
-                Month5TRxState: trx_month_5.to_i,
-                Month6TRxState: trx_month_6.to_i,
-                TotalNRxState: total_nrx,
-                TotalTRxState: total_trx
-            )
-            stateList << new_state
         end
         row_num = row_num + 1
     end
