@@ -12,6 +12,7 @@
   <tbody>
     <% @states.each do |state| %>
       <tr>
+        <td><%= state.StateID %></td>
         <td><%= link_to 'Show', state %></td>
         <td><%= link_to 'Edit', edit_state_path(state) %></td>
         <td><%= link_to 'Destroy', state, method: :delete, data: { confirm: 'Are you sure?' } %></td>

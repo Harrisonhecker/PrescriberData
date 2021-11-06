@@ -10,13 +10,13 @@ class StatesController < ApplicationController
     # iterate over each row and store the correct information, start at row 2 to skip past headers
     last_row = sheet.last_row
     row_num = 2
-    stateList = []
+    stateList = [] # array will contain the state objects
+    stateNames = [] # array will contain the names of the states
+    stateIndex = 0
     while row_num <= last_row do
         
         # save data
         state_id = sheet.cell(row_num, 1) 
-        doctor_first_name = sheet.cell(row_num, 2)
-        doctor_last_name = sheet.cell(row_num, 3)
         state = sheet.cell(row_num, 4)
         product = sheet.cell(row_num, 5)
         nrx_month_1 = sheet.cell(row_num, 6)
@@ -34,31 +34,60 @@ class StatesController < ApplicationController
         total_nrx = nrx_month_1.to_i + nrx_month_2.to_i + nrx_month_3.to_i + nrx_month_4.to_i + nrx_month_5.to_i + nrx_month_6.to_i
         total_trx = trx_month_1.to_i + trx_month_2.to_i + trx_month_3.to_i + trx_month_4.to_i + trx_month_5.to_i + trx_month_6.to_i
 
-        new_doctor = State.new(
-            StateID: state_id,
-            Month1NRxState: nrx_month_1,
-            Month2NRxState: nrx_month_2,
-            Month3NRxState: nrx_month_3,
-            Month4NRxState: nrx_month_4,
-            Month5NRxState: nrx_month_5,
-            Month6NRxState: nrx_month_6,
-            Month1TRxState: trx_month_1,
-            Month2TRxState: trx_month_2,
-            Month3TRxState: trx_month_3,
-            Month4TRxState: trx_month_4,
-            Month5TRxState: trx_month_5,
-            Month6TRxState: trx_month_6,
-            TotalNRxState: total_nrx,
-            TotalTRxState: total_trx
-        )
+        # if state name not in hash, add to hash
+        if (stateNames.find_index(state).nil?)
+            stateNames[stateIndex] = state
+            stateIndex += 1
+        end
+
+        # if state already exists in the db, update values
+        if (!(stateNames.find_index(state).nil?))
+            currentState = stateList[stateNames.find_index(state)]
+            currentState.Month1NRxState += (nrx_month_1).to_i
+            currentState.Month2NRxState += (nrx_month_2).to_i
+            currentState.Month3NRxState += (nrx_month_3).to_i
+            currentState.Month4NRxState += (nrx_month_4).to_i
+            currentState.Month5NRxState += (nrx_month_5).to_i
+            currentState.Month6NRxState += (nrx_month_6).to_i
+            currentState.Month1TRxState += (trx_month_1).to_i
+            currentState.Month2TRxState += (trx_month_2).to_i
+            currentState.Month3TRxState += (trx_month_3).to_i
+            currentState.Month4TRxState += (trx_month_4).to_i
+            currentState.Month5TRxState += (trx_month_5).to_i
+            currentState.Month6TRxState += (trx_month_6).to_i
+            currentState.TotalNRxState += total_nrx
+            currentState.TotalTRxState += total_trx
+   
+        # if state doesn't exist in list, add it to
+        else 
+            new_state = State.new(
+                StateID: state_id,
+                Month1NRxState: nrx_month_1.to_i,
+                Month2NRxState: nrx_month_2.to_i,
+                Month3NRxState: nrx_month_3.to_i,
+                Month4NRxState: nrx_month_4.to_i,
+                Month5NRxState: nrx_month_5.to_i,
+                Month6NRxState: nrx_month_6.to_i,
+                Month1TRxState: trx_month_1.to_i,
+                Month2TRxState: trx_month_2.to_i,
+                Month3TRxState: trx_month_3.to_i,
+                Month4TRxState: trx_month_4.to_i,
+                Month5TRxState: trx_month_5.to_i,
+                Month6TRxState: trx_month_6.to_i,
+                TotalNRxState: total_nrx,
+                TotalTRxState: total_trx
+            )
+            stateList << new_state
+        end
         row_num = row_num + 1
-        stateList << new_state
     end
-    State.import doctorList
+    State.import stateList
   end
 
   # GET /states or /states.json
   def index
+    State.delete_all
+    parse_info
     @states = State.all
   end
 
