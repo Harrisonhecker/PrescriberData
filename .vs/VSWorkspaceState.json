@@ -3,9 +3,7 @@
     "",
     "\\app",
     "\\app\\controllers",
-    "\\app\\views",
-    "\\app\\views\\home"
+    "\\app\\views"
   ],
-  "SelectedNode": "\\app\\views\\home\\display.html.erb",
   "PreviewInSolutionExplorer": false
 }
