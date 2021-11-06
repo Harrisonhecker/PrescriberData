@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem "roo", "~> 2.8.3"
 gem "activerecord-import", "~> 1.2"
+gem "chartkick"
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
