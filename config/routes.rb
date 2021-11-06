@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :states
+  resources :doctors
   resources :products
   get 'products/index'
   root to: 'products#index'
