@@ -32,6 +32,8 @@ class DoctorsController < ApplicationController
         trx_month_4 = sheet.cell(row_num, 15)
         trx_month_5 = sheet.cell(row_num, 16)
         trx_month_6 = sheet.cell(row_num, 17)
+        total_nrx = nrx_month_1 + nrx_month_2 + nrx_month_3 + nrx_month_4 + nrx_month_5 + nrx_month_6
+        total_trx = trx_month_1 + trx_month_2 + trx_month_3 + trx_month_4 + trx_month_5 + trx_month_6
 
         new_doctor = Doctor.new(
             DoctorID: doctor_id,
@@ -49,6 +51,8 @@ class DoctorsController < ApplicationController
             Month4TRxDoctor: trx_month_4,
             Month5TRxDoctor: trx_month_5,
             Month6TRxDoctor: trx_month_6,
+            TotalTRxDoctor: total_trx,
+            TotalNRxDoctor: total_nrx
         )
         row_num = row_num + 1
         doctorList << new_doctor
