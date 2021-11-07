@@ -1,80 +1,113 @@
+<!DOCTYPE html>
 <%= stylesheet_link_tag 'products' %>
-<p id="notice"><%= notice %></p>
+<html>
+    <img src="https://www.veeva.com/wp-content/themes/veeva2015/assets/img/placeholders/veeva-logo.png">
+    <img style="float: right" src="https://www.veeva.com/wp-content/themes/veeva2015/assets/img/placeholders/veeva-logo.png">
 
-<h1>Products</h1>
+    </div class="body">
+        <h1 style="text-align:center">Products</h1>
 
-<button type="button" onclick ="location.href = 'http://localhost:3000/doctors';">Doctors</button>
-<button type="button" onclick ="location.href = 'http://localhost:3000/states';">States</button>
+        <button type="button" class="button" onclick ="location.href = 'http://localhost:3000/doctors';">Doctors</button>
+        <button type="button" class="button" onclick ="location.href = 'http://localhost:3000/states';">States</button>
 
-<table style="width:100%">
-  <thead>
-    <tr>
-      <th>Product Name</th>
-      <th>Month 1 NRx</th>
-      <th>Month 2 NRx</th>
-      <th>Month 3 NRx</th>
-      <th>Month 4 NRx</th>
-      <th>Month 5 NRx</th>
-      <th>Month 6 NRx</th>
-      <th>Month 1 TRx</th>
-      <th>Month 2 TRx</th>
-      <th>Month 3 TRx</th>
-      <th>Month 4 TRx</th>
-      <th>Month 5 TRx</th>
-      <th>Month 6 TRx</th>
-      <th>Total NRx</th>
-      <th>Total TRx</th>
-    </tr>
-  </thead>
+        <br>
+        <br>
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr  style="outline: thin solid">
-        <td style="text-align:center"><%= product.ProductName %></td>
-        <td style="text-align:center"><%= product.Month1NRxProduct %></td>
-        <td style="text-align:center"><%= product.Month2NRxProduct %></td>
-        <td style="text-align:center"><%= product.Month3NRxProduct %></td>
-        <td style="text-align:center"><%= product.Month4NRxProduct %></td>
-        <td style="text-align:center"><%= product.Month5NRxProduct %></td>
-        <td style="text-align:center"><%= product.Month6NRxProduct %></td>
-        <td style="text-align:center"><%= product.Month1TRxProduct %></td>
-        <td style="text-align:center"><%= product.Month2TRxProduct %></td>
-        <td style="text-align:center"><%= product.Month3TRxProduct %></td>
-        <td style="text-align:center"><%= product.Month4TRxProduct %></td>
-        <td style="text-align:center"><%= product.Month5TRxProduct %></td>
-        <td style="text-align:center"><%= product.Month6TRxProduct %></td>
-        <td style="text-align:center"><%= product.TotalNRxProduct %></td>
-        <td style="text-align:center"><%= product.TotalTRxProduct %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<br>
-
-<table>
-    <thead>
-        <% @products.each do |product| %>
-            <th colspan="1"><%= product.ProductName %></td>
-        <% end %>
-    </thead>
-    <tbody>
-            <tr  style="outline: thin solid">
-                <% @products.each do |product| %>
-                    <td style="text-align:center"><%= "Top Doctor: " + product.TopDoctor %></td>
-                <% end %>
+        <table style="width:100%">
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th>Month 1 NRx</th>
+              <th>Month 2 NRx</th>
+              <th>Month 3 NRx</th>
+              <th>Month 4 NRx</th>
+              <th>Month 5 NRx</th>
+              <th>Month 6 NRx</th>
+              <th>Month 1 TRx</th>
+              <th>Month 2 TRx</th>
+              <th>Month 3 TRx</th>
+              <th>Month 4 TRx</th>
+              <th>Month 5 TRx</th>
+              <th>Month 6 TRx</th>
+              <th>Total NRx</th>
+              <th>Total TRx</th>
             </tr>
-            <tr  style="outline: thin solid">
+          </thead>
+
+          <tbody>
+            <% @products.each do |product| %>
+              <tr  style="outline: thin solid">
+                <td style="text-align:center"><%= product.ProductName %></td>
+                <td style="text-align:center"><%= product.Month1NRxProduct %></td>
+                <td style="text-align:center"><%= product.Month2NRxProduct %></td>
+                <td style="text-align:center"><%= product.Month3NRxProduct %></td>
+                <td style="text-align:center"><%= product.Month4NRxProduct %></td>
+                <td style="text-align:center"><%= product.Month5NRxProduct %></td>
+                <td style="text-align:center"><%= product.Month6NRxProduct %></td>
+                <td style="text-align:center"><%= product.Month1TRxProduct %></td>
+                <td style="text-align:center"><%= product.Month2TRxProduct %></td>
+                <td style="text-align:center"><%= product.Month3TRxProduct %></td>
+                <td style="text-align:center"><%= product.Month4TRxProduct %></td>
+                <td style="text-align:center"><%= product.Month5TRxProduct %></td>
+                <td style="text-align:center"><%= product.Month6TRxProduct %></td>
+                <td style="text-align:center"><%= product.TotalNRxProduct %></td>
+                <td style="text-align:center"><%= product.TotalTRxProduct %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <br>
+        <br>
+
+        <table class="center">
+            <thead>
                 <% @products.each do |product| %>
-                    <td style="text-align:center"><%= "Number of Prescriptions: " + product.TopDoctorPrescriptions.to_s %></td>
+                    <th colspan="1"><%= product.ProductName %></td>
                 <% end %>
-            </tr>
-    </tbody>
-</table>
-
-<%= bar_chart Product.group(:TotalTRx).count %>
-
-<br>
-<br>
+            </thead>
+            <tbody>
+                    <tr  style="outline: thin solid">
+                        <% @products.each do |product| %>
+                            <td style="text-align:center"><%= "Top Doctor: " + product.TopDoctor %></td>
+                        <% end %>
+                    </tr>
+                    <tr  style="outline: thin solid">
+                        <% @products.each do |product| %>
+                            <td style="text-align:center"><%= "Number of Prescriptions: " + product.TopDoctorPrescriptions.to_s %></td>
+                        <% end %>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="middle">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</html>
 
