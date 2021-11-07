@@ -31,7 +31,7 @@ require 'roo' # use this gem for parsing excel files
         trx_month_5 = sheet.cell(row_num, 16)
         trx_month_6 = sheet.cell(row_num, 17)
         total_nrx = nrx_month_1.to_i + nrx_month_2.to_i + nrx_month_3.to_i + nrx_month_4.to_i + nrx_month_5.to_i + nrx_month_6.to_i
-        total_trx = trx_month_1.to_i + trx_month_2.to_i + trx_month_3.to_i + trx_month_4.to_i + trx_month_5.to_i + trx_month_6.to_i
+        total_trx = total_nrx + trx_month_1.to_i + trx_month_2.to_i + trx_month_3.to_i + trx_month_4.to_i + trx_month_5.to_i + trx_month_6.to_i
 
         # if product does not exist, create it
         if (productNames.find_index(product).nil?)

@@ -82,34 +82,8 @@
     </div>
     <br>
     <div class="middle">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <%= pie_chart Product.group(:ProductName).count %>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        <%= bar_chart Product.group(:ProductName).sum(:TotalNRxProduct), xtitle: "Total New Prescriptions", ytitle: "Product"%>
+        <%= bar_chart Product.group(:ProductName).sum(:TotalTRxProduct), xtitle: "Total Prescriptions", ytitle: "Product"%>
     </div>
 
 
