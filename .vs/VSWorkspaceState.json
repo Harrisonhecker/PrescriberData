@@ -2,13 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\app",
-    "\\app\\controllers",
+    "\\app\\assets\\javascripts",
+    "\\app\\javascript",
+    "\\app\\javascript\\packs",
     "\\app\\models",
-    "\\app\\views",
-    "\\config",
-    "\\db",
+    "\\app\\views\\products",
     "\\db\\migrate"
   ],
-  "SelectedNode": "\\app\\views\\layouts",
+  "SelectedNode": "\\app\\javascript\\packs\\application.js",
   "PreviewInSolutionExplorer": false
 }

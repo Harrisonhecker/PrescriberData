@@ -4,10 +4,10 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
+import "chartkick/chart.js"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import "chartkick/chart.js"
+import Turbolinks from "turbolinks"
 
 Rails.start()
 Turbolinks.start()
