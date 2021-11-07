@@ -37,7 +37,7 @@
           <tbody>
             <% @products.each do |product| %>
               <tr  style="outline: thin solid">
-                <td style="text-align:center"><%= product.ProductName %></td>
+                <td style="text-align:center"><%= product.ProductName + " (ID: " + product.ProductID.to_s + ")" %></td>
                 <td style="text-align:center"><%= product.Month1NRxProduct %></td>
                 <td style="text-align:center"><%= product.Month2NRxProduct %></td>
                 <td style="text-align:center"><%= product.Month3NRxProduct %></td>
@@ -82,8 +82,11 @@
     </div>
     <br>
     <div class="middle">
-        <%= bar_chart Product.group(:ProductName).sum(:TotalNRxProduct), xtitle: "Total New Prescriptions", ytitle: "Product"%>
-        <%= bar_chart Product.group(:ProductName).sum(:TotalTRxProduct), xtitle: "Total Prescriptions", ytitle: "Product"%>
+        <hr>
+        <%= bar_chart Product.group(:ProductName).sum(:TotalNRxProduct), xtitle: "Total New Prescriptions", ytitle: "Product", title: "Total New Prescriptions by Product"%>
+        <hr>
+        <%= bar_chart Product.group(:ProductName).sum(:TotalTRxProduct), xtitle: "Total Prescriptions", ytitle: "Product", title: "Total Prescriptions by Product", color: ["#235"]%>
+        <hr>
     </div>
 
 

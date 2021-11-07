@@ -15,30 +15,32 @@
     <div class="middle">
         <br>
         <br>
+        <%= pie_chart Doctor.group(:DoctorsProduct).count, title: "Number of Doctors Prescribing the Products"%>
+        <hr>
+        <!--<%= column_chart Doctor.group(:DoctorID).sum(:TotalNRxDoctor), xtitle: "Doctor ID", ytitle: "Total New Prescriptions" %>-->
+        <!--<%= column_chart Doctor.group(:DoctorID).sum(:TotalTRxDoctor), xtitle: "Doctor ID", ytitle: "Total Prescriptions" %>-->
         <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <%= pie_chart Doctor.group(:Product).count %>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        <table class="center" style="width:100%">
+            <tbody>
+                <tr>
+                    <td><%= column_chart Doctor.group(:DoctorsProduct).sum(:Month1NRxDoctor), xtitle: "Product", ytitle: "Total New Prescriptions", title: "Month 1 NRx", width: "200px", color: ["#FA4"] %></td>
+                    <td><%= column_chart Doctor.group(:DoctorsProduct).sum(:Month2NRxDoctor), xtitle: "Product", ytitle: "Total New Prescriptions", title: "Month 2 NRx", width: "200px" %></td>
+                    <td><%= column_chart Doctor.group(:DoctorsProduct).sum(:Month3NRxDoctor), xtitle: "Product", ytitle: "Total New Prescriptions", title: "Month 3 NRx",  width: "200px" %></td>
+                    <td><%= column_chart Doctor.group(:DoctorsProduct).sum(:Month4NRxDoctor), xtitle: "Product", ytitle: "Total New Prescriptions", title: "Month 4 NRx",  width: "200px" %></td>
+                    <td><%= column_chart Doctor.group(:DoctorsProduct).sum(:Month5NRxDoctor), xtitle: "Product", ytitle: "Total New Prescriptions", title: "Month 5 NRx",  width: "200px" %></td>
+                    <td><%= column_chart Doctor.group(:DoctorsProduct).sum(:Month6NRxDoctor), xtitle: "Product", ytitle: "Total New Prescriptions", title: "Month 6 NRx",  width: "200px" %></td>
+                <tr>
+                <tr>
+                    <td><%= column_chart Doctor.group(:DoctorsProduct).sum(:Month1TRxDoctor), xtitle: "Product", ytitle: "Total Prescriptions", title: "Month 1 TRx", width: "200px" %></td>
+                    <td><%= column_chart Doctor.group(:DoctorsProduct).sum(:Month2TRxDoctor), xtitle: "Product", ytitle: "Total Prescriptions", title: "Month 2 TRx", width: "200px" %></td>
+                    <td><%= column_chart Doctor.group(:DoctorsProduct).sum(:Month3TRxDoctor), xtitle: "Product", ytitle: "Total Prescriptions", title: "Month 3 TRx", width: "200px" %></td>
+                    <td><%= column_chart Doctor.group(:DoctorsProduct).sum(:Month4TRxDoctor), xtitle: "Product", ytitle: "Total Prescriptions", title: "Month 4 TRx", width: "200px" %></td>
+                    <td><%= column_chart Doctor.group(:DoctorsProduct).sum(:Month5TRxDoctor), xtitle: "Product", ytitle: "Total Prescriptions", title: "Month 5 TRx", width: "200px" %></td>
+                    <td><%= column_chart Doctor.group(:DoctorsProduct).sum(:Month6TRxDoctor), xtitle: "Product", ytitle: "Total Prescriptions", title: "Month 6 TRx", width: "200px" %></td>
+                <tr>
+            </tbody>
+        </table>
+        <hr>
         <br>
     </div>
     
@@ -67,7 +69,7 @@
       <tbody>
         <% @doctors.each do |doctor| %>
           <tr  style="outline: thin solid">
-            <td style="text-align:center"><%= doctor.FirstName + " " + doctor.LastName %></td>
+            <td style="text-align:center"><%= doctor.FirstName + " " + doctor.LastName + " (ID: " + doctor.DoctorID.to_s + ")"  %></td>
             <td style="text-align:center"><%= doctor.DoctorsProduct %></td>
             <td style="text-align:center"><%= doctor.Month1NRxDoctor %></td>
             <td style="text-align:center"><%= doctor.Month2NRxDoctor %></td>
