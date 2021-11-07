@@ -32,6 +32,11 @@ class DoctorsController < ApplicationController
         trx_month_4 = sheet.cell(row_num, 15)
         trx_month_5 = sheet.cell(row_num, 16)
         trx_month_6 = sheet.cell(row_num, 17)
+        if (nrx_month_6.to_i >= (nrx_month_1.to_i + (nrx_month_1.to_i * 0.20)).round)
+            top_prescriber = true
+        else   
+            top_prescriber = false
+        end
         total_nrx = nrx_month_1.to_i + nrx_month_2.to_i + nrx_month_3.to_i + nrx_month_4.to_i + nrx_month_5.to_i + nrx_month_6.to_i
         total_trx = total_nrx + trx_month_1.to_i + trx_month_2.to_i + trx_month_3.to_i + trx_month_4.to_i + trx_month_5.to_i + trx_month_6.to_i
 
@@ -53,7 +58,8 @@ class DoctorsController < ApplicationController
             Month6TRxDoctor: trx_month_6,
             TotalNRxDoctor: total_nrx,
             TotalTRxDoctor: total_trx,
-            DoctorsProduct: product
+            DoctorsProduct: product,
+            TopPrescriber: top_prescriber
         )
         row_num = row_num + 1
         doctorList << new_doctor

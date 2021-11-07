@@ -64,9 +64,15 @@
         </tr>
       </thead>
 
+      <p font-color="rgb(27, 47, 84)">The highlighted doctors showed a growth in new prescription rate of 20% over 6 months. As a consequence, they have been identified as potential future top prescribers for Veeva.</p>
+
       <tbody>
         <% @doctors.each do |doctor| %>
-          <tr  style="outline: thin solid">
+          <% if doctor.TopPrescriber %>
+            <tr class="prescriber" style="outline: thin solid">
+          <% else %>
+            <tr style="outline: thin solid">
+          <% end %>  
             <td style="text-align:center"><%= doctor.FirstName + " " + doctor.LastName + " (ID: " + doctor.DoctorID.to_s + ")"  %></td>
             <td style="text-align:center"><%= doctor.DoctorsProduct %></td>
             <td style="text-align:center"><%= doctor.Month1NRxDoctor %></td>

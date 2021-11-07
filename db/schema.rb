@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_06_232423) do
+ActiveRecord::Schema.define(version: 2021_11_07_083046) do
 
   create_table "doctors", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2021_11_06_232423) do
     t.string "FirstName"
     t.string "LastName"
     t.string "DoctorsProduct"
+    t.boolean "TopPrescriber"
   end
 
   create_table "products", force: :cascade do |t|
