@@ -1,53 +1,93 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<%= stylesheet_link_tag 'products' %>
+<html>
+    
+    <img src="https://www.veeva.com/wp-content/themes/veeva2015/assets/img/placeholders/veeva-logo.png">
+    <img style="float: right" src="https://www.veeva.com/wp-content/themes/veeva2015/assets/img/placeholders/veeva-logo.png">
 
-<h1>States</h1>
+    <h1 style="text-align:center">States</h1>
 
-<button type="button" onclick ="location.href = 'http://localhost:3000/doctors';">Doctors</button>
-<button type="button" onclick ="location.href = 'http://localhost:3000/products';">Product</button>
+    <button type="button" class="button" onclick ="location.href = 'http://localhost:3000/doctors';">Doctors</button>
+    <button type="button" class="button" onclick ="location.href = 'http://localhost:3000/products';">Product</button>
 
-<table style="width:100%">
-  <thead>
-    <tr>
-      <th>State</th>
-      <th>Month 1 NRx</th>
-      <th>Month 2 NRx</th>
-      <th>Month 3 NRx</th>
-      <th>Month 4 NRx</th>
-      <th>Month 5 NRx</th>
-      <th>Month 6 NRx</th>
-      <th>Month 1 TRx</th>
-      <th>Month 2 TRx</th>
-      <th>Month 3 TRx</th>
-      <th>Month 4 TRx</th>
-      <th>Month 5 TRx</th>
-      <th>Month 6 TRx</th>
-      <th>Total NRx</th>
-      <th>Total TRx</th>
-    </tr>
-    </tr>
-  </thead>
+    <br>
+    <br>
 
-  <tbody>
-    <% @states.each do |state| %>
-      <tr  style="outline: thin solid">
-        <td style="text-align:center"><%= state.StateName %></td>
-        <td style="text-align:center"><%= state.Month1NRxState %></td>
-        <td style="text-align:center"><%= state.Month2NRxState %></td>
-        <td style="text-align:center"><%= state.Month3NRxState %></td>
-        <td style="text-align:center"><%= state.Month4NRxState %></td>
-        <td style="text-align:center"><%= state.Month5NRxState %></td>
-        <td style="text-align:center"><%= state.Month6NRxState %></td>
-        <td style="text-align:center"><%= state.Month1TRxState %></td>
-        <td style="text-align:center"><%= state.Month2TRxState %></td>
-        <td style="text-align:center"><%= state.Month3TRxState %></td>
-        <td style="text-align:center"><%= state.Month4TRxState %></td>
-        <td style="text-align:center"><%= state.Month5TRxState %></td>
-        <td style="text-align:center"><%= state.Month6TRxState %></td>
-        <td style="text-align:center"><%= state.TotalNRxState %></td>
-        <td style="text-align:center"><%= state.TotalTRxState %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <table style="width:100%">
+      <thead>
+        <tr>
+          <th>State</th>
+          <th>Month 1 NRx</th>
+          <th>Month 2 NRx</th>
+          <th>Month 3 NRx</th>
+          <th>Month 4 NRx</th>
+          <th>Month 5 NRx</th>
+          <th>Month 6 NRx</th>
+          <th>Month 1 TRx</th>
+          <th>Month 2 TRx</th>
+          <th>Month 3 TRx</th>
+          <th>Month 4 TRx</th>
+          <th>Month 5 TRx</th>
+          <th>Month 6 TRx</th>
+          <th>Total NRx</th>
+          <th>Total TRx</th>
+        </tr>
+        </tr>
+      </thead>
 
-<br>
+      <tbody>
+        <% @states.each do |state| %>
+          <tr  style="outline: thin solid">
+            <td style="text-align:center"><%= state.StateName %></td>
+            <td style="text-align:center"><%= state.Month1NRxState %></td>
+            <td style="text-align:center"><%= state.Month2NRxState %></td>
+            <td style="text-align:center"><%= state.Month3NRxState %></td>
+            <td style="text-align:center"><%= state.Month4NRxState %></td>
+            <td style="text-align:center"><%= state.Month5NRxState %></td>
+            <td style="text-align:center"><%= state.Month6NRxState %></td>
+            <td style="text-align:center"><%= state.Month1TRxState %></td>
+            <td style="text-align:center"><%= state.Month2TRxState %></td>
+            <td style="text-align:center"><%= state.Month3TRxState %></td>
+            <td style="text-align:center"><%= state.Month4TRxState %></td>
+            <td style="text-align:center"><%= state.Month5TRxState %></td>
+            <td style="text-align:center"><%= state.Month6TRxState %></td>
+            <td style="text-align:center"><%= state.TotalNRxState %></td>
+            <td style="text-align:center"><%= state.TotalTRxState %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+    <div class="middle">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+</html>
