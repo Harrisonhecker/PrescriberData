@@ -7,8 +7,8 @@
 
     <h1 style="text-align:center">States</h1>
 
-    <button type="button" class="button" onclick ="location.href = 'http://localhost:3000/doctors';">Doctors</button>
-    <button type="button" class="button" onclick ="location.href = 'http://localhost:3000/products';">Product</button>
+    <button type="button" class="button" onclick ="location.href = 'http://localhost:3000/doctors';">Doctor Analytics</button>
+    <button type="button" class="button" onclick ="location.href = 'http://localhost:3000/products';">Product Analytics</button>
 
     <br>
     <br>
@@ -20,6 +20,7 @@
         <hr>
         <%= column_chart State.group(:StateID).sum(:TotalTRxState), xtitle: "State ID", ytitle: "Total Prescriptions", title: "Total Prescriptions by State" %>
         <hr>
+        <br>
         <br>
     </div>
 

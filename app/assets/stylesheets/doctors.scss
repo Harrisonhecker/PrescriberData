@@ -16,7 +16,13 @@ div.body {
 	background-color: rgb(279, 171, 72);
 	border: 2px solid white;
 	color: white;
-	text-align: center
+	text-align: center;
+	padding: 15px;
+	font-size: 13px;
+}
+
+.button:hover {
+	background-color: rgb(27, 47, 84);
 }
 
 table.center {
