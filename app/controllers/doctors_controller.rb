@@ -32,14 +32,18 @@ class DoctorsController < ApplicationController
         trx_month_4 = sheet.cell(row_num, 15)
         trx_month_5 = sheet.cell(row_num, 16)
         trx_month_6 = sheet.cell(row_num, 17)
+        
+        # This code determines if the doctor is a potential top describer. Calculates if they had a 20% increase in new prescription rate and sets the boolean accordingly
         if (nrx_month_6.to_i >= (nrx_month_1.to_i + (nrx_month_1.to_i * 0.20)).round)
             top_prescriber = true
         else   
             top_prescriber = false
         end
+
         total_nrx = nrx_month_1.to_i + nrx_month_2.to_i + nrx_month_3.to_i + nrx_month_4.to_i + nrx_month_5.to_i + nrx_month_6.to_i
         total_trx = total_nrx + trx_month_1.to_i + trx_month_2.to_i + trx_month_3.to_i + trx_month_4.to_i + trx_month_5.to_i + trx_month_6.to_i
 
+        # initialize new instance of a doctor
         new_doctor = Doctor.new(
             DoctorID: doctor_id,
             FirstName: doctor_first_name,
@@ -61,11 +65,21 @@ class DoctorsController < ApplicationController
             DoctorsProduct: product,
             TopPrescriber: top_prescriber
         )
+        
+        # increment forward and add the doctor to the array
         row_num = row_num + 1
         doctorList << new_doctor
     end
+
+    # bulk insert into database to increase speed
     Doctor.import doctorList
   end
+
+
+
+
+
+  # ---------- We don't use this code, but we were too scared to get rid of it. ----------
 
   # GET /doctors or /doctors.json
   def index

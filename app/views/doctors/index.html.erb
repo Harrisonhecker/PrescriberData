@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <%= stylesheet_link_tag 'doctors' %>
 <html>
+    <!-- add company logos -->
     <img src="https://www.veeva.com/wp-content/themes/veeva2015/assets/img/placeholders/veeva-logo.png">
     <img style="float: right" src="https://www.veeva.com/wp-content/themes/veeva2015/assets/img/placeholders/veeva-logo.png">
 
     <h1 style="text-align:center">Doctors</h1>
 
+    <!-- buttons for navigating between views -->
     <button type="button" class="button" onclick ="location.href = 'http://localhost:3000/products';">Product Analytics</button>
     <button type="button" class="button" onclick ="location.href = 'http://localhost:3000/states';">State Analytics</button>
 
     <br>
     <br>
 
+    <!-- begin charts section -->
     <div class="middle">
         <br>
         <br>
@@ -42,6 +45,7 @@
         <br>
     </div>
     
+    <!-- begin table of data section -->
     <table style="width:100%">
       <thead>
         <tr>
@@ -68,6 +72,7 @@
 
       <tbody>
         <% @doctors.each do |doctor| %>
+          <!-- if the boolean specifies that the doctor is a potential top subscriber, highlight the row -->
           <% if doctor.TopPrescriber %>
             <tr class="prescriber" style="outline: thin solid">
           <% else %>

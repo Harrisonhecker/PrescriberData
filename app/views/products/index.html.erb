@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <%= stylesheet_link_tag 'products' %>
 <html>
+
+    <!-- put in company logos -->
     <img src="https://www.veeva.com/wp-content/themes/veeva2015/assets/img/placeholders/veeva-logo.png">
     <img style="float: right" src="https://www.veeva.com/wp-content/themes/veeva2015/assets/img/placeholders/veeva-logo.png">
 
@@ -13,6 +15,7 @@
         <br>
         <br>
 
+        <!-- begin table section -->
         <table style="width:100%">
           <thead>
             <tr>
@@ -60,6 +63,7 @@
         <br>
         <br>
 
+        <!-- output top prescriber and the associated number of prescriptions for each product -->
         <table class="center">
             <thead>
                 <% @products.each do |product| %>
@@ -83,6 +87,8 @@
     <br>
     <br>
     <br>
+
+    <!-- begin graphs section -->
     <div class="middle">
         <hr>
         <%= bar_chart Product.group(:ProductName).sum(:TotalNRxProduct), xtitle: "Total New Prescriptions", ytitle: "Product", title: "Total New Prescriptions by Product"%>

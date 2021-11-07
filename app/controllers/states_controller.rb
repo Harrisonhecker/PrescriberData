@@ -34,28 +34,31 @@ class StatesController < ApplicationController
         total_trx = total_nrx + trx_month_1.to_i + trx_month_2.to_i + trx_month_3.to_i + trx_month_4.to_i + trx_month_5.to_i + trx_month_6.to_i
 
         # if state does not exist, create it
-        if (stateNames.find_index(state).nil?)
+        if (stateNames.find_index(state).nil?) # if the state's name has already been put into this array, it's been initialized
             stateNames << state
             new_state = State.new(
-            StateID: state_id,
-            StateName: state,
-            Month1NRxState: nrx_month_1.to_i,
-            Month2NRxState: nrx_month_2.to_i,
-            Month3NRxState: nrx_month_3.to_i,
-            Month4NRxState: nrx_month_4.to_i,
-            Month5NRxState: nrx_month_5.to_i,
-            Month6NRxState: nrx_month_6.to_i,
-            Month1TRxState: trx_month_1.to_i,
-            Month2TRxState: trx_month_2.to_i,
-            Month3TRxState: trx_month_3.to_i,
-            Month4TRxState: trx_month_4.to_i,
-            Month5TRxState: trx_month_5.to_i,
-            Month6TRxState: trx_month_6.to_i,
-            TotalNRxState: total_nrx,
-            TotalTRxState: total_trx
+                StateID: state_id,
+                StateName: state,
+                Month1NRxState: nrx_month_1.to_i,
+                Month2NRxState: nrx_month_2.to_i,
+                Month3NRxState: nrx_month_3.to_i,
+                Month4NRxState: nrx_month_4.to_i,
+                Month5NRxState: nrx_month_5.to_i,
+                Month6NRxState: nrx_month_6.to_i,
+                Month1TRxState: trx_month_1.to_i,
+                Month2TRxState: trx_month_2.to_i,
+                Month3TRxState: trx_month_3.to_i,
+                Month4TRxState: trx_month_4.to_i,
+                Month5TRxState: trx_month_5.to_i,
+                Month6TRxState: trx_month_6.to_i,
+                TotalNRxState: total_nrx,
+                TotalTRxState: total_trx
             )
+            
+            # add to state array
             stateList << new_state
-        # if state does exist, update values
+        
+            # if state does exist, update values
         else 
             currentState = stateList[stateNames.find_index(state)]
             currentState.Month1NRxState += (nrx_month_1).to_i
@@ -73,10 +76,17 @@ class StatesController < ApplicationController
             currentState.TotalNRxState += total_nrx
             currentState.TotalTRxState += total_trx
         end
+
+        # increment forward
         row_num = row_num + 1
     end
+
+    # bulk insert into database to increase speed
     State.import stateList
   end
+
+
+  # ---------- We don't use this code, but we were too scared to get rid of it. ----------
 
   # GET /states or /states.json
   def index

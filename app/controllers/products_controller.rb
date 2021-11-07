@@ -56,8 +56,11 @@ require 'roo' # use this gem for parsing excel files
                 TopDoctor: doctor,
                 TopDoctorPrescriptions: total_trx
             )
+
+            # add to product array
             productList << new_product
-        # if product does exist, update values
+        
+            # if product does exist, update values
         else 
             currentProduct = productList[productNames.find_index(product)]
             currentProduct.Month1NRxProduct += (nrx_month_1).to_i
@@ -74,19 +77,26 @@ require 'roo' # use this gem for parsing excel files
             currentProduct.Month6TRxProduct += (trx_month_6).to_i
             currentProduct.TotalNRxProduct += total_nrx
             currentProduct.TotalTRxProduct += total_trx
-            if (currentProduct.TopDoctorPrescriptions < total_trx) # maintain which doctor has the most prescriptions for the product
+            
+            # this code maintains which doctor has the most prescriptions for the product as well as the number of prescriptions
+            if (currentProduct.TopDoctorPrescriptions < total_trx)
                 currentProduct.TopDoctor = doctor
                 currentProduct.TopDoctorPrescriptions = total_trx
             end
         end
+
+        # increment forward
         row_num = row_num + 1
     end
+
+    # bulk insert into database to increase speed 
     Product.import productList
   end
 
 
 
 
+  # ---------- We don't use this code, but we were too scared to get rid of it. ----------
 
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
