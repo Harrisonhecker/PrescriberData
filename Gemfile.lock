@@ -217,7 +217,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
-  chartkick (~> 4.1.2)
+  chartkick (~> 4.1, >= 4.1.2)
   jbuilder (~> 2.7)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
