@@ -5,25 +5,49 @@
 <button type="button" onclick ="location.href = 'http://localhost:3000/doctors';">Doctors</button>
 <button type="button" onclick ="location.href = 'http://localhost:3000/products';">Product</button>
 
-<table>
+<table style="width:100%">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>State</th>
+      <th>Month 1 NRx</th>
+      <th>Month 2 NRx</th>
+      <th>Month 3 NRx</th>
+      <th>Month 4 NRx</th>
+      <th>Month 5 NRx</th>
+      <th>Month 6 NRx</th>
+      <th>Month 1 TRx</th>
+      <th>Month 2 TRx</th>
+      <th>Month 3 TRx</th>
+      <th>Month 4 TRx</th>
+      <th>Month 5 TRx</th>
+      <th>Month 6 TRx</th>
+      <th>Total NRx</th>
+      <th>Total TRx</th>
+    </tr>
     </tr>
   </thead>
 
   <tbody>
     <% @states.each do |state| %>
-      <tr>
-        <td><%= state.StateName %></td>
-        <td><%= link_to 'Show', state %></td>
-        <td><%= link_to 'Edit', edit_state_path(state) %></td>
-        <td><%= link_to 'Destroy', state, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr  style="outline: thin solid">
+        <td style="text-align:center"><%= state.StateName %></td>
+        <td style="text-align:center"><%= state.Month1NRxState %></td>
+        <td style="text-align:center"><%= state.Month2NRxState %></td>
+        <td style="text-align:center"><%= state.Month3NRxState %></td>
+        <td style="text-align:center"><%= state.Month4NRxState %></td>
+        <td style="text-align:center"><%= state.Month5NRxState %></td>
+        <td style="text-align:center"><%= state.Month6NRxState %></td>
+        <td style="text-align:center"><%= state.Month1TRxState %></td>
+        <td style="text-align:center"><%= state.Month2TRxState %></td>
+        <td style="text-align:center"><%= state.Month3TRxState %></td>
+        <td style="text-align:center"><%= state.Month4TRxState %></td>
+        <td style="text-align:center"><%= state.Month5TRxState %></td>
+        <td style="text-align:center"><%= state.Month6TRxState %></td>
+        <td style="text-align:center"><%= state.TotalNRxState %></td>
+        <td style="text-align:center"><%= state.TotalTRxState %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New State', new_state_path %>

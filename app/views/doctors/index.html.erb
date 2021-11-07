@@ -5,7 +5,7 @@
 <button type="button" onclick ="location.href = 'http://localhost:3000/products';">Products</button>
 <button type="button" onclick ="location.href = 'http://localhost:3000/states';">States</button>
 
-<table>
+<table style="width:100%">
   <thead>
     <tr>
       <th>Doctor</th>
@@ -29,7 +29,7 @@
 
   <tbody>
     <% @doctors.each do |doctor| %>
-      <tr>
+      <tr  style="outline: thin solid">
         <td style="text-align:center"><%= doctor.FirstName + " " + doctor.LastName %></td>
         <td style="text-align:center"><%= doctor.DoctorsProduct %></td>
         <td style="text-align:center"><%= doctor.Month1NRxDoctor %></td>
@@ -45,7 +45,7 @@
         <td style="text-align:center"><%= doctor.Month5TRxDoctor %></td>
         <td style="text-align:center"><%= doctor.Month6TRxDoctor %></td>
         <td style="text-align:center"><%= doctor.TotalNRxDoctor %></td>
-        <td style="text-align:center"><%= doctor.TotalNRxDoctor %></td>
+        <td style="text-align:center"><%= doctor.TotalTRxDoctor %></td>
       </tr>
     <% end %>
   </tbody>

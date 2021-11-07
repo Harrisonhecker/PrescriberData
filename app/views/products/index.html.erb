@@ -28,7 +28,7 @@
 
   <tbody>
     <% @products.each do |product| %>
-      <tr>
+      <tr  style="outline: thin solid">
         <td style="text-align:center"><%= product.ProductName %></td>
         <td style="text-align:center"><%= product.Month1NRxProduct %></td>
         <td style="text-align:center"><%= product.Month2NRxProduct %></td>
@@ -43,7 +43,7 @@
         <td style="text-align:center"><%= product.Month5TRxProduct %></td>
         <td style="text-align:center"><%= product.Month6TRxProduct %></td>
         <td style="text-align:center"><%= product.TotalNRxProduct %></td>
-        <td style="text-align:center"><%= product.TotalNRxProduct %></td>
+        <td style="text-align:center"><%= product.TotalTRxProduct %></td>
       </tr>
     <% end %>
   </tbody>
@@ -59,12 +59,12 @@
         <% end %>
     </thead>
     <tbody>
-            <tr>
+            <tr  style="outline: thin solid">
                 <% @products.each do |product| %>
                     <td style="text-align:center"><%= "Top Doctor: " + product.TopDoctor %></td>
                 <% end %>
             </tr>
-            <tr>
+            <tr  style="outline: thin solid">
                 <% @products.each do |product| %>
                     <td style="text-align:center"><%= "Number of Prescriptions: " + product.TopDoctorPrescriptions.to_s %></td>
                 <% end %>
