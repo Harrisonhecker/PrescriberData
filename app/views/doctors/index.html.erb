@@ -1,54 +1,91 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<%= stylesheet_link_tag 'doctors' %>
+<html>
+    <img src="https://www.veeva.com/wp-content/themes/veeva2015/assets/img/placeholders/veeva-logo.png">
+    <img style="float: right" src="https://www.veeva.com/wp-content/themes/veeva2015/assets/img/placeholders/veeva-logo.png">
 
-<h1>Doctors</h1>
+    <h1 style="text-align:center">Doctors</h1>
 
-<button type="button" onclick ="location.href = 'http://localhost:3000/products';">Products</button>
-<button type="button" onclick ="location.href = 'http://localhost:3000/states';">States</button>
+    <button type="button" class="button" onclick ="location.href = 'http://localhost:3000/products';">Products</button>
+    <button type="button" class="button" onclick ="location.href = 'http://localhost:3000/states';">States</button>
 
-<table style="width:100%">
-  <thead>
-    <tr>
-      <th>Doctor</th>
-      <th>Product</th>
-      <th>Month 1 NRx</th>
-      <th>Month 2 NRx</th>
-      <th>Month 3 NRx</th>
-      <th>Month 4 NRx</th>
-      <th>Month 5 NRx</th>
-      <th>Month 6 NRx</th>
-      <th>Month 1 TRx</th>
-      <th>Month 2 TRx</th>
-      <th>Month 3 TRx</th>
-      <th>Month 4 TRx</th>
-      <th>Month 5 TRx</th>
-      <th>Month 6 TRx</th>
-      <th>Total NRx</th>
-      <th>Total TRx</th>
-    </tr>
-  </thead>
+    <br>
+    <br>
 
-  <tbody>
-    <% @doctors.each do |doctor| %>
-      <tr  style="outline: thin solid">
-        <td style="text-align:center"><%= doctor.FirstName + " " + doctor.LastName %></td>
-        <td style="text-align:center"><%= doctor.DoctorsProduct %></td>
-        <td style="text-align:center"><%= doctor.Month1NRxDoctor %></td>
-        <td style="text-align:center"><%= doctor.Month2NRxDoctor %></td>
-        <td style="text-align:center"><%= doctor.Month3NRxDoctor %></td>
-        <td style="text-align:center"><%= doctor.Month4NRxDoctor %></td>
-        <td style="text-align:center"><%= doctor.Month5NRxDoctor %></td>
-        <td style="text-align:center"><%= doctor.Month6NRxDoctor %></td>
-        <td style="text-align:center"><%= doctor.Month1TRxDoctor %></td>
-        <td style="text-align:center"><%= doctor.Month2TRxDoctor %></td>
-        <td style="text-align:center"><%= doctor.Month3TRxDoctor %></td>
-        <td style="text-align:center"><%= doctor.Month4TRxDoctor %></td>
-        <td style="text-align:center"><%= doctor.Month5TRxDoctor %></td>
-        <td style="text-align:center"><%= doctor.Month6TRxDoctor %></td>
-        <td style="text-align:center"><%= doctor.TotalNRxDoctor %></td>
-        <td style="text-align:center"><%= doctor.TotalTRxDoctor %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <table style="width:100%">
+      <thead>
+        <tr>
+          <th>Doctor</th>
+          <th>Product</th>
+          <th>Month 1 NRx</th>
+          <th>Month 2 NRx</th>
+          <th>Month 3 NRx</th>
+          <th>Month 4 NRx</th>
+          <th>Month 5 NRx</th>
+          <th>Month 6 NRx</th>
+          <th>Month 1 TRx</th>
+          <th>Month 2 TRx</th>
+          <th>Month 3 TRx</th>
+          <th>Month 4 TRx</th>
+          <th>Month 5 TRx</th>
+          <th>Month 6 TRx</th>
+          <th>Total NRx</th>
+          <th>Total TRx</th>
+        </tr>
+      </thead>
 
-<br>
+      <tbody>
+        <% @doctors.each do |doctor| %>
+          <tr  style="outline: thin solid">
+            <td style="text-align:center"><%= doctor.FirstName + " " + doctor.LastName %></td>
+            <td style="text-align:center"><%= doctor.DoctorsProduct %></td>
+            <td style="text-align:center"><%= doctor.Month1NRxDoctor %></td>
+            <td style="text-align:center"><%= doctor.Month2NRxDoctor %></td>
+            <td style="text-align:center"><%= doctor.Month3NRxDoctor %></td>
+            <td style="text-align:center"><%= doctor.Month4NRxDoctor %></td>
+            <td style="text-align:center"><%= doctor.Month5NRxDoctor %></td>
+            <td style="text-align:center"><%= doctor.Month6NRxDoctor %></td>
+            <td style="text-align:center"><%= doctor.Month1TRxDoctor %></td>
+            <td style="text-align:center"><%= doctor.Month2TRxDoctor %></td>
+            <td style="text-align:center"><%= doctor.Month3TRxDoctor %></td>
+            <td style="text-align:center"><%= doctor.Month4TRxDoctor %></td>
+            <td style="text-align:center"><%= doctor.Month5TRxDoctor %></td>
+            <td style="text-align:center"><%= doctor.Month6TRxDoctor %></td>
+            <td style="text-align:center"><%= doctor.TotalNRxDoctor %></td>
+            <td style="text-align:center"><%= doctor.TotalTRxDoctor %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="middle">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+</html>
